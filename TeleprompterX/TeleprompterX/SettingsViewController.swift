@@ -231,11 +231,12 @@ class SettingsViewController: UIViewController, TimedSpeechCellDelegate  {
     }
 
     func registerCells() {
-        let cellIdentifiers = (0...24).map { "SettingsCell_\($0)" }
+        let cellIdentifiers = (0...27).map { "SettingsCell_\($0)" }
         for identifier in cellIdentifiers {
             tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
         }
     }
+
 
     @objc func lineHeightStepperValueChanged(_ stepper: UIStepper) {
         let lineHeight = CGFloat(stepper.value)
@@ -299,70 +300,59 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         }
 
         var reuseIdentifier: String = ""
-        var row: Int = 0
+        var row: Int?
 
         switch indexPath.section {
-            case 1:
-                if indexPath.row <= 2 {
-                    row = indexPath.row
-                } else if indexPath.row == 3 {
-                    row = 4
-                }
-            case 2:
+        case 1:
+            row = indexPath.row // Section 1: indices 0-3
+        case 2:
             if indexPath.row == 0 {
-                        row = 3
-                    } else if indexPath.row == 1 {
-                        row = 5
-                    } else if indexPath.row == 2 {
-                        return configureMarginsCell(for: indexPath)
-                    }
-            case 3:
-                if indexPath.row <= 5 {
-                    row = indexPath.row + 6
-                } else if indexPath.row == 6 {
-                    return configureTapToScrollCell(for: indexPath)
-                } else if indexPath.row == 7 {
-                    return configurePaginationCell(for: indexPath)
-                } else if indexPath.row == 8 {
-                    return configureVideoCaptionsCell(for: indexPath)
-                } else if indexPath.row == 9 {
-                    return configureHighlightLineCell(for: indexPath) // Add this line
-                }
-            case 4:
-                if indexPath.row == 0 {
-                    return configureExternalDisplayCell(for: indexPath)
-                } else if indexPath.row == 1 {
-                    return configureWatermarkCell(for: indexPath)
-                }
-            case 5:
-                row = indexPath.row + 13
-            case 6:
-                row = indexPath.row + 17
-            case 7:
-                row = indexPath.row + 21
-            default:
-                fatalError("Unexpected section \(indexPath.section)")
+                row = 4 // "Font Face"
+            } else if indexPath.row == 1 {
+                row = 5 // "Alignment"
+            } else if indexPath.row == 2 {
+                return configureMarginsCell(for: indexPath) // "Margins"
+            }
+        case 3:
+            row = 6 + indexPath.row // Section 3: indices 6-15
+            // Special cells for specific rows
+            if indexPath.row == 6 { return configureTapToScrollCell(for: indexPath) }
+            if indexPath.row == 7 { return configurePaginationCell(for: indexPath) }
+            if indexPath.row == 8 { return configureVideoCaptionsCell(for: indexPath) }
+            if indexPath.row == 9 { return configureHighlightLineCell(for: indexPath) }
+        case 4:
+            row = indexPath.row == 0 ? 26 : 27 // "External Display" and "Watermark"
+            return indexPath.row == 0 ? configureExternalDisplayCell(for: indexPath) : configureWatermarkCell(for: indexPath)
+        case 5:
+            row = 17 + indexPath.row // "Game Controller"
+        case 6:
+            row = 18 + indexPath.row // Section 6: indices 18-21
+        case 7:
+            row = 22 + indexPath.row // Section 7: indices 22-25
+        default:
+            fatalError("Unexpected section \(indexPath.section)")
         }
 
-        if row == 7 {
-            reuseIdentifier = "TimedSpeechCell"
-        } else if row == 10 {
-            reuseIdentifier = "TimerSettingsCell"
-        } else {
-            reuseIdentifier = "SettingsCell_\(row)"
+        guard let validRow = row, validRow < settingsOptions.count else {
+            fatalError("Row \(String(describing: row)) out of range for settingsOptions")
         }
 
+        // Configure the cell
+        reuseIdentifier = validRow == 7 ? "TimedSpeechCell" : (validRow == 10 ? "TimerSettingsCell" : "SettingsCell_\(validRow)")
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        cell.textLabel?.text = settingsOptions[row]
+        cell.textLabel?.text = settingsOptions[validRow]
 
+        // Additional cell configurations...
         if indexPath.section == 3 && indexPath.row == 5 {
             cell = configureBackgroundAudioCell(cell)
         } else {
-            cell = configureSettingCell(cell, for: row)
+            cell = configureSettingCell(cell, for: validRow)
         }
 
         return cell
     }
+
+
 
 
     func configureHighlightLineCell(for indexPath: IndexPath) -> UITableViewCell {
