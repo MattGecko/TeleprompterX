@@ -1,0 +1,1039 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7648E4922C20AFC20029CE3D /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7648E4912C20AFC20029CE3D /* DisplayViewController.swift */; };
+		7648E4942C24643A0029CE3D /* ExternalDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7648E4932C24643A0029CE3D /* ExternalDisplayCell.swift */; };
+		7648E4962C24B0D80029CE3D /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 7648E4952C24B0D80029CE3D /* FirebaseMessaging */; };
+		7648E4A42C26D15D0029CE3D /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = 7648E4A32C26D15D0029CE3D /* FacebookAEM */; };
+		7648E4A62C26D15D0029CE3D /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 7648E4A52C26D15D0029CE3D /* FacebookBasics */; };
+		7648E4A82C26D15D0029CE3D /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7648E4A72C26D15D0029CE3D /* FacebookCore */; };
+		7648E4AA2C26D15D0029CE3D /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 7648E4A92C26D15D0029CE3D /* FacebookLogin */; };
+		7654D3DE2BF69DA2000DBE24 /* AEXML in Frameworks */ = {isa = PBXBuildFile; productRef = 7654D3DD2BF69DA2000DBE24 /* AEXML */; };
+		7654D3E12BF73E4B000DBE24 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7654D3E02BF73E4B000DBE24 /* ZIPFoundation */; };
+		7654D3E42BF769E8000DBE24 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 7654D3E32BF769E8000DBE24 /* XMLCoder */; };
+		7654D3E92BF77F13000DBE24 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 7654D3E82BF77F13000DBE24 /* RevenueCat */; };
+		7654D3EB2BF77F13000DBE24 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7654D3EA2BF77F13000DBE24 /* RevenueCatUI */; };
+		7654D3F02BF78CD2000DBE24 /* Main.storyboard in Sources */ = {isa = PBXBuildFile; fileRef = 81D52A792BD9769A00490625 /* Main.storyboard */; };
+		7654D4152BF7D6EF000DBE24 /* cue.png in Sources */ = {isa = PBXBuildFile; fileRef = 7654D4142BF7D60D000DBE24 /* cue.png */; };
+		76580E322BE7D3BD005E0A91 /* NewUIPiPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76580E312BE7D3BD005E0A91 /* NewUIPiPView.swift */; };
+		76580E342BEAB9E7005E0A91 /* TimedSpeechCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76580E332BEAB9E7005E0A91 /* TimedSpeechCell.swift */; };
+		76580E362BEFAD95005E0A91 /* EditTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76580E352BEFAD95005E0A91 /* EditTextView.swift */; };
+		7699F1FE2BFA4059001C0FDA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699F1FD2BFA4059001C0FDA /* GameViewController.swift */; };
+		7699F2002BFA4A58001C0FDA /* SuggestFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699F1FF2BFA4A58001C0FDA /* SuggestFeatureViewController.swift */; };
+		7699F2012BFBD857001C0FDA /* controls.png in Sources */ = {isa = PBXBuildFile; fileRef = 810D285E2BFBBB8B002042FB /* controls.png */; };
+		76ADE75D2C11055E009DEC2C /* SecretUpgradeOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADE75C2C11055D009DEC2C /* SecretUpgradeOfferViewController.swift */; };
+		76BDC1CE2BDADBC00069D812 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BDC1CD2BDADBC00069D812 /* SettingsViewController.swift */; };
+		76EB9C222BE40AFA0087C039 /* FloatingWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB9C212BE40AFA0087C039 /* FloatingWindowViewController.swift */; };
+		76EB9C242BE40C7D0087C039 /* TextStylingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB9C232BE40C7D0087C039 /* TextStylingDelegate.swift */; };
+		76EB9C262BE40E770087C039 /* FloatingScriptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB9C252BE40E770087C039 /* FloatingScriptViewController.swift */; };
+		76EB9C282BE759EE0087C039 /* FloatingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB9C272BE759EE0087C039 /* FloatingWindow.swift */; };
+		76EB9C2B2BE76C010087C039 /* UIPiPView in Frameworks */ = {isa = PBXBuildFile; productRef = 76EB9C2A2BE76C010087C039 /* UIPiPView */; };
+		76EE47EE2BEFF37600B24AA2 /* GeneralSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE47ED2BEFF37500B24AA2 /* GeneralSettingsViewController.swift */; };
+		76EE47F02BF131AE00B24AA2 /* TimerSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE47EF2BF131AE00B24AA2 /* TimerSettingsCell.swift */; };
+		76EE961F2BFD28F100546087 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 76EE961E2BFD28F100546087 /* FirebaseAnalytics */; };
+		76EE96212BFD28F100546087 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 76EE96202BFD28F100546087 /* FirebaseAnalyticsOnDeviceConversion */; };
+		76EE96232BFD28F100546087 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 76EE96222BFD28F100546087 /* FirebaseAnalyticsSwift */; };
+		76EE96252BFD28F100546087 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 76EE96242BFD28F100546087 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		76EE96272BFD28F100546087 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 76EE96262BFD28F100546087 /* FirebaseAppCheck */; };
+		76EE96292BFD293B00546087 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE96282BFD293B00546087 /* FirebaseManager.swift */; };
+		76EE962C2BFD299E00546087 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 76EE962B2BFD299E00546087 /* FirebaseAuth */; };
+		76EE962E2BFD29B400546087 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE962D2BFD29B400546087 /* SessionStore.swift */; };
+		76EE96302BFD29E100546087 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE962F2BFD29E100546087 /* AuthenticationView.swift */; };
+		76EE96312BFD2A6900546087 /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 76EE961C2BFD286700546087 /* GoogleService-Info.plist */; };
+		76EE96372BFE1B2B00546087 /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE96362BFE1B2B00546087 /* Script.swift */; };
+		76EE96392BFE1B5A00546087 /* UserDefaults+Scripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE96382BFE1B5A00546087 /* UserDefaults+Scripts.swift */; };
+		76EE963B2BFE1C0000546087 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 76EE963A2BFE1C0000546087 /* FirebaseFirestore */; };
+		76EE963D2BFE1C2000546087 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 76EE963C2BFE1C2000546087 /* FirebaseFirestoreCombine-Community */; };
+		76EE963F2BFE1C2000546087 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 76EE963E2BFE1C2000546087 /* FirebaseFirestoreSwift */; };
+		76EE96442BFFBE5200546087 /* EditScriptDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE96432BFFBE5200546087 /* EditScriptDelegate.swift */; };
+		76EE96802BFFC4C700546087 /* SavedScriptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE967F2BFFC4C700546087 /* SavedScriptsViewController.swift */; };
+		76EE96822C01193300546087 /* ScriptsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE96812C01193300546087 /* ScriptsCollectionViewController.swift */; };
+		76EE96842C011BB200546087 /* ScriptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE96832C011BB200546087 /* ScriptCell.swift */; };
+		76F748712C05B70900FCB64B /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F748702C05B70900FCB64B /* AuthenticationServices.framework */; };
+		76F748732C0655F200FCB64B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F748722C0655F200FCB64B /* AVFoundation.framework */; };
+		76F748752C087B1000FCB64B /* metronome.mp3 in Sources */ = {isa = PBXBuildFile; fileRef = 76F748742C087A1300FCB64B /* metronome.mp3 */; };
+		76F748772C087F4900FCB64B /* metronome.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 76F748742C087A1300FCB64B /* metronome.mp3 */; };
+		76F748792C08976300FCB64B /* SpecialOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F748782C08976300FCB64B /* SpecialOfferViewController.swift */; };
+		76FAF0282C162743001A041D /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76FAF0262C162740001A041D /* Speech.framework */; };
+		76FAF02C2C18E30B001A041D /* MarginSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FAF02B2C18E30B001A041D /* MarginSettingsViewController.swift */; };
+		810D285F2BFBBE34002042FB /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 81D52A7C2BD976DF00490625 /* Assets.xcassets */; };
+		813F0C3E2C09CABB00DE8D33 /* bg.png in Sources */ = {isa = PBXBuildFile; fileRef = 813F0C3D2C09CAAE00DE8D33 /* bg.png */; };
+		81CC4C862C04DE2E00235742 /* script.png in Sources */ = {isa = PBXBuildFile; fileRef = 81CC4C852C04DE2E00235742 /* script.png */; };
+		81D52A742BD9769900490625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D52A732BD9769900490625 /* AppDelegate.swift */; };
+		81D52A762BD9769900490625 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D52A752BD9769900490625 /* SceneDelegate.swift */; };
+		81D52A782BD9769900490625 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D52A772BD9769900490625 /* ViewController.swift */; };
+		81D52A8B2BD976DF00490625 /* TeleprompterXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D52A8A2BD976DF00490625 /* TeleprompterXTests.swift */; };
+		81D52A952BD976E000490625 /* TeleprompterXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D52A942BD976E000490625 /* TeleprompterXUITests.swift */; };
+		81D52A972BD976E000490625 /* TeleprompterXUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D52A962BD976E000490625 /* TeleprompterXUITestsLaunchTests.swift */; };
+		81E0C5332BFFDE050095CB91 /* MyScripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E0C5322BFFDE040095CB91 /* MyScripts.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		81D52A872BD976DF00490625 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81D52A682BD9769900490625 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81D52A6F2BD9769900490625;
+			remoteInfo = TeleprompterX;
+		};
+		81D52A912BD976E000490625 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81D52A682BD9769900490625 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81D52A6F2BD9769900490625;
+			remoteInfo = TeleprompterX;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		76F748762C087F3D00FCB64B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				76F748772C087F4900FCB64B /* metronome.mp3 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7648E4912C20AFC20029CE3D /* DisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
+		7648E4932C24643A0029CE3D /* ExternalDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayCell.swift; sourceTree = "<group>"; };
+		7654D4142BF7D60D000DBE24 /* cue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cue.png; sourceTree = "<group>"; };
+		76580E312BE7D3BD005E0A91 /* NewUIPiPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUIPiPView.swift; sourceTree = "<group>"; };
+		76580E332BEAB9E7005E0A91 /* TimedSpeechCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedSpeechCell.swift; sourceTree = "<group>"; };
+		76580E352BEFAD95005E0A91 /* EditTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextView.swift; sourceTree = "<group>"; };
+		7699F1FD2BFA4059001C0FDA /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		7699F1FF2BFA4A58001C0FDA /* SuggestFeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestFeatureViewController.swift; sourceTree = "<group>"; };
+		76ADE75C2C11055D009DEC2C /* SecretUpgradeOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretUpgradeOfferViewController.swift; sourceTree = "<group>"; };
+		76BDC1CD2BDADBC00069D812 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		76EB9C212BE40AFA0087C039 /* FloatingWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindowViewController.swift; sourceTree = "<group>"; };
+		76EB9C232BE40C7D0087C039 /* TextStylingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStylingDelegate.swift; sourceTree = "<group>"; };
+		76EB9C252BE40E770087C039 /* FloatingScriptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingScriptViewController.swift; sourceTree = "<group>"; };
+		76EB9C272BE759EE0087C039 /* FloatingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindow.swift; sourceTree = "<group>"; };
+		76EE47ED2BEFF37500B24AA2 /* GeneralSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewController.swift; sourceTree = "<group>"; };
+		76EE47EF2BF131AE00B24AA2 /* TimerSettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerSettingsCell.swift; sourceTree = "<group>"; };
+		76EE961C2BFD286700546087 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		76EE96282BFD293B00546087 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		76EE962D2BFD29B400546087 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		76EE962F2BFD29E100546087 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		76EE96362BFE1B2B00546087 /* Script.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
+		76EE96382BFE1B5A00546087 /* UserDefaults+Scripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Scripts.swift"; sourceTree = "<group>"; };
+		76EE96402BFF64EA00546087 /* TeleprompterX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeleprompterX.entitlements; sourceTree = "<group>"; };
+		76EE96432BFFBE5200546087 /* EditScriptDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScriptDelegate.swift; sourceTree = "<group>"; };
+		76EE967F2BFFC4C700546087 /* SavedScriptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedScriptsViewController.swift; sourceTree = "<group>"; };
+		76EE96812C01193300546087 /* ScriptsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptsCollectionViewController.swift; sourceTree = "<group>"; };
+		76EE96832C011BB200546087 /* ScriptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptCell.swift; sourceTree = "<group>"; };
+		76F748702C05B70900FCB64B /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		76F748722C0655F200FCB64B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		76F748742C087A1300FCB64B /* metronome.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = metronome.mp3; sourceTree = "<group>"; };
+		76F748782C08976300FCB64B /* SpecialOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialOfferViewController.swift; sourceTree = "<group>"; };
+		76FAF0262C162740001A041D /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
+		76FAF02B2C18E30B001A041D /* MarginSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarginSettingsViewController.swift; sourceTree = "<group>"; };
+		810D285E2BFBBB8B002042FB /* controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controls.png; sourceTree = "<group>"; };
+		813F0C3D2C09CAAE00DE8D33 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		817B109A2C04DCF800157675 /* script.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = script.png; sourceTree = "<group>"; };
+		81CC4C852C04DE2E00235742 /* script.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = script.png; sourceTree = "<group>"; };
+		81D52A702BD9769900490625 /* TeleprompterX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeleprompterX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81D52A732BD9769900490625 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		81D52A752BD9769900490625 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		81D52A772BD9769900490625 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		81D52A7A2BD9769A00490625 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		81D52A7C2BD976DF00490625 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		81D52A7F2BD976DF00490625 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		81D52A812BD976DF00490625 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81D52A862BD976DF00490625 /* TeleprompterXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeleprompterXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		81D52A8A2BD976DF00490625 /* TeleprompterXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterXTests.swift; sourceTree = "<group>"; };
+		81D52A902BD976E000490625 /* TeleprompterXUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeleprompterXUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		81D52A942BD976E000490625 /* TeleprompterXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterXUITests.swift; sourceTree = "<group>"; };
+		81D52A962BD976E000490625 /* TeleprompterXUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterXUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		81E0C5322BFFDE040095CB91 /* MyScripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScripts.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		81D52A6D2BD9769900490625 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7648E4A62C26D15D0029CE3D /* FacebookBasics in Frameworks */,
+				76F748732C0655F200FCB64B /* AVFoundation.framework in Frameworks */,
+				76F748712C05B70900FCB64B /* AuthenticationServices.framework in Frameworks */,
+				76EE96232BFD28F100546087 /* FirebaseAnalyticsSwift in Frameworks */,
+				76EE963B2BFE1C0000546087 /* FirebaseFirestore in Frameworks */,
+				76EE96252BFD28F100546087 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				76EE961F2BFD28F100546087 /* FirebaseAnalytics in Frameworks */,
+				7654D3DE2BF69DA2000DBE24 /* AEXML in Frameworks */,
+				76EE963F2BFE1C2000546087 /* FirebaseFirestoreSwift in Frameworks */,
+				7648E4962C24B0D80029CE3D /* FirebaseMessaging in Frameworks */,
+				76EB9C2B2BE76C010087C039 /* UIPiPView in Frameworks */,
+				7654D3EB2BF77F13000DBE24 /* RevenueCatUI in Frameworks */,
+				76FAF0282C162743001A041D /* Speech.framework in Frameworks */,
+				7654D3E92BF77F13000DBE24 /* RevenueCat in Frameworks */,
+				76EE962C2BFD299E00546087 /* FirebaseAuth in Frameworks */,
+				7648E4AA2C26D15D0029CE3D /* FacebookLogin in Frameworks */,
+				7648E4A82C26D15D0029CE3D /* FacebookCore in Frameworks */,
+				7654D3E42BF769E8000DBE24 /* XMLCoder in Frameworks */,
+				7654D3E12BF73E4B000DBE24 /* ZIPFoundation in Frameworks */,
+				7648E4A42C26D15D0029CE3D /* FacebookAEM in Frameworks */,
+				76EE96212BFD28F100546087 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				76EE96272BFD28F100546087 /* FirebaseAppCheck in Frameworks */,
+				76EE963D2BFE1C2000546087 /* FirebaseFirestoreCombine-Community in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81D52A832BD976DF00490625 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81D52A8D2BD976E000490625 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		76E23EB62BFD1CAE00861AA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76FAF0262C162740001A041D /* Speech.framework */,
+				76F748722C0655F200FCB64B /* AVFoundation.framework */,
+				76F748702C05B70900FCB64B /* AuthenticationServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76EE962A2BFD294100546087 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				76EE96282BFD293B00546087 /* FirebaseManager.swift */,
+				76EE962D2BFD29B400546087 /* SessionStore.swift */,
+				76EE962F2BFD29E100546087 /* AuthenticationView.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		81D52A672BD9769900490625 = {
+			isa = PBXGroup;
+			children = (
+				81CC4C852C04DE2E00235742 /* script.png */,
+				81D52A722BD9769900490625 /* TeleprompterX */,
+				81D52A892BD976DF00490625 /* TeleprompterXTests */,
+				81D52A932BD976E000490625 /* TeleprompterXUITests */,
+				81D52A712BD9769900490625 /* Products */,
+				76E23EB62BFD1CAE00861AA2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		81D52A712BD9769900490625 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				81D52A702BD9769900490625 /* TeleprompterX.app */,
+				81D52A862BD976DF00490625 /* TeleprompterXTests.xctest */,
+				81D52A902BD976E000490625 /* TeleprompterXUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		81D52A722BD9769900490625 /* TeleprompterX */ = {
+			isa = PBXGroup;
+			children = (
+				76EE96402BFF64EA00546087 /* TeleprompterX.entitlements */,
+				810D285E2BFBBB8B002042FB /* controls.png */,
+				813F0C3D2C09CAAE00DE8D33 /* bg.png */,
+				81D52A732BD9769900490625 /* AppDelegate.swift */,
+				76F748782C08976300FCB64B /* SpecialOfferViewController.swift */,
+				81D52A752BD9769900490625 /* SceneDelegate.swift */,
+				76EE96812C01193300546087 /* ScriptsCollectionViewController.swift */,
+				76EE96832C011BB200546087 /* ScriptCell.swift */,
+				81D52A772BD9769900490625 /* ViewController.swift */,
+				76BDC1CD2BDADBC00069D812 /* SettingsViewController.swift */,
+				76580E332BEAB9E7005E0A91 /* TimedSpeechCell.swift */,
+				76EE47EF2BF131AE00B24AA2 /* TimerSettingsCell.swift */,
+				76EB9C212BE40AFA0087C039 /* FloatingWindowViewController.swift */,
+				76EB9C232BE40C7D0087C039 /* TextStylingDelegate.swift */,
+				76EB9C252BE40E770087C039 /* FloatingScriptViewController.swift */,
+				76EB9C272BE759EE0087C039 /* FloatingWindow.swift */,
+				76580E312BE7D3BD005E0A91 /* NewUIPiPView.swift */,
+				76580E352BEFAD95005E0A91 /* EditTextView.swift */,
+				76EE96432BFFBE5200546087 /* EditScriptDelegate.swift */,
+				76EE967F2BFFC4C700546087 /* SavedScriptsViewController.swift */,
+				76EE47ED2BEFF37500B24AA2 /* GeneralSettingsViewController.swift */,
+				7699F1FD2BFA4059001C0FDA /* GameViewController.swift */,
+				7699F1FF2BFA4A58001C0FDA /* SuggestFeatureViewController.swift */,
+				76EE96362BFE1B2B00546087 /* Script.swift */,
+				76EE96382BFE1B5A00546087 /* UserDefaults+Scripts.swift */,
+				81E0C5322BFFDE040095CB91 /* MyScripts.swift */,
+				76ADE75C2C11055D009DEC2C /* SecretUpgradeOfferViewController.swift */,
+				76FAF02B2C18E30B001A041D /* MarginSettingsViewController.swift */,
+				7648E4932C24643A0029CE3D /* ExternalDisplayCell.swift */,
+				7648E4912C20AFC20029CE3D /* DisplayViewController.swift */,
+				76EE962A2BFD294100546087 /* Firebase */,
+				7654D4142BF7D60D000DBE24 /* cue.png */,
+				817B109A2C04DCF800157675 /* script.png */,
+				76F748742C087A1300FCB64B /* metronome.mp3 */,
+				81D52A792BD9769A00490625 /* Main.storyboard */,
+				81D52A7C2BD976DF00490625 /* Assets.xcassets */,
+				81D52A7E2BD976DF00490625 /* LaunchScreen.storyboard */,
+				76EE961C2BFD286700546087 /* GoogleService-Info.plist */,
+				81D52A812BD976DF00490625 /* Info.plist */,
+			);
+			path = TeleprompterX;
+			sourceTree = "<group>";
+		};
+		81D52A892BD976DF00490625 /* TeleprompterXTests */ = {
+			isa = PBXGroup;
+			children = (
+				81D52A8A2BD976DF00490625 /* TeleprompterXTests.swift */,
+			);
+			path = TeleprompterXTests;
+			sourceTree = "<group>";
+		};
+		81D52A932BD976E000490625 /* TeleprompterXUITests */ = {
+			isa = PBXGroup;
+			children = (
+				81D52A942BD976E000490625 /* TeleprompterXUITests.swift */,
+				81D52A962BD976E000490625 /* TeleprompterXUITestsLaunchTests.swift */,
+			);
+			path = TeleprompterXUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		81D52A6F2BD9769900490625 /* TeleprompterX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81D52A9A2BD976E000490625 /* Build configuration list for PBXNativeTarget "TeleprompterX" */;
+			buildPhases = (
+				81D52A6C2BD9769900490625 /* Sources */,
+				81D52A6D2BD9769900490625 /* Frameworks */,
+				76F748762C087F3D00FCB64B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TeleprompterX;
+			packageProductDependencies = (
+				76EB9C2A2BE76C010087C039 /* UIPiPView */,
+				7654D3DD2BF69DA2000DBE24 /* AEXML */,
+				7654D3E02BF73E4B000DBE24 /* ZIPFoundation */,
+				7654D3E32BF769E8000DBE24 /* XMLCoder */,
+				7654D3E82BF77F13000DBE24 /* RevenueCat */,
+				7654D3EA2BF77F13000DBE24 /* RevenueCatUI */,
+				76EE961E2BFD28F100546087 /* FirebaseAnalytics */,
+				76EE96202BFD28F100546087 /* FirebaseAnalyticsOnDeviceConversion */,
+				76EE96222BFD28F100546087 /* FirebaseAnalyticsSwift */,
+				76EE96242BFD28F100546087 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				76EE96262BFD28F100546087 /* FirebaseAppCheck */,
+				76EE962B2BFD299E00546087 /* FirebaseAuth */,
+				76EE963A2BFE1C0000546087 /* FirebaseFirestore */,
+				76EE963C2BFE1C2000546087 /* FirebaseFirestoreCombine-Community */,
+				76EE963E2BFE1C2000546087 /* FirebaseFirestoreSwift */,
+				7648E4952C24B0D80029CE3D /* FirebaseMessaging */,
+				7648E4A32C26D15D0029CE3D /* FacebookAEM */,
+				7648E4A52C26D15D0029CE3D /* FacebookBasics */,
+				7648E4A72C26D15D0029CE3D /* FacebookCore */,
+				7648E4A92C26D15D0029CE3D /* FacebookLogin */,
+			);
+			productName = TeleprompterX;
+			productReference = 81D52A702BD9769900490625 /* TeleprompterX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		81D52A852BD976DF00490625 /* TeleprompterXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81D52A9D2BD976E000490625 /* Build configuration list for PBXNativeTarget "TeleprompterXTests" */;
+			buildPhases = (
+				81D52A822BD976DF00490625 /* Sources */,
+				81D52A832BD976DF00490625 /* Frameworks */,
+				81D52A842BD976DF00490625 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81D52A882BD976DF00490625 /* PBXTargetDependency */,
+			);
+			name = TeleprompterXTests;
+			productName = TeleprompterXTests;
+			productReference = 81D52A862BD976DF00490625 /* TeleprompterXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		81D52A8F2BD976E000490625 /* TeleprompterXUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81D52AA02BD976E000490625 /* Build configuration list for PBXNativeTarget "TeleprompterXUITests" */;
+			buildPhases = (
+				81D52A8C2BD976E000490625 /* Sources */,
+				81D52A8D2BD976E000490625 /* Frameworks */,
+				81D52A8E2BD976E000490625 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81D52A922BD976E000490625 /* PBXTargetDependency */,
+			);
+			name = TeleprompterXUITests;
+			productName = TeleprompterXUITests;
+			productReference = 81D52A902BD976E000490625 /* TeleprompterXUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		81D52A682BD9769900490625 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				KnownAssetTags = (
+					New,
+				);
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					81D52A6F2BD9769900490625 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					81D52A852BD976DF00490625 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 81D52A6F2BD9769900490625;
+					};
+					81D52A8F2BD976E000490625 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 81D52A6F2BD9769900490625;
+					};
+				};
+			};
+			buildConfigurationList = 81D52A6B2BD9769900490625 /* Build configuration list for PBXProject "TeleprompterX" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 81D52A672BD9769900490625;
+			packageReferences = (
+				76EB9C292BE76AD90087C039 /* XCRemoteSwiftPackageReference "UIPiPView" */,
+				7654D3DC2BF69DA2000DBE24 /* XCRemoteSwiftPackageReference "AEXML" */,
+				7654D3DF2BF73E4B000DBE24 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+				7654D3E22BF769E8000DBE24 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+				7654D3E52BF77F13000DBE24 /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				76EE961D2BFD28F100546087 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7648E4A22C26D15D0029CE3D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
+			productRefGroup = 81D52A712BD9769900490625 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				81D52A6F2BD9769900490625 /* TeleprompterX */,
+				81D52A852BD976DF00490625 /* TeleprompterXTests */,
+				81D52A8F2BD976E000490625 /* TeleprompterXUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		81D52A842BD976DF00490625 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81D52A8E2BD976E000490625 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		81D52A6C2BD9769900490625 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				813F0C3E2C09CABB00DE8D33 /* bg.png in Sources */,
+				76F748752C087B1000FCB64B /* metronome.mp3 in Sources */,
+				76EE96312BFD2A6900546087 /* GoogleService-Info.plist in Sources */,
+				7699F2012BFBD857001C0FDA /* controls.png in Sources */,
+				76EE96842C011BB200546087 /* ScriptCell.swift in Sources */,
+				810D285F2BFBBE34002042FB /* Assets.xcassets in Sources */,
+				7699F2002BFA4A58001C0FDA /* SuggestFeatureViewController.swift in Sources */,
+				76FAF02C2C18E30B001A041D /* MarginSettingsViewController.swift in Sources */,
+				76EE96372BFE1B2B00546087 /* Script.swift in Sources */,
+				76EE96802BFFC4C700546087 /* SavedScriptsViewController.swift in Sources */,
+				81CC4C862C04DE2E00235742 /* script.png in Sources */,
+				76F748792C08976300FCB64B /* SpecialOfferViewController.swift in Sources */,
+				7654D4152BF7D6EF000DBE24 /* cue.png in Sources */,
+				7654D3F02BF78CD2000DBE24 /* Main.storyboard in Sources */,
+				7648E4922C20AFC20029CE3D /* DisplayViewController.swift in Sources */,
+				81E0C5332BFFDE050095CB91 /* MyScripts.swift in Sources */,
+				76EB9C262BE40E770087C039 /* FloatingScriptViewController.swift in Sources */,
+				7648E4942C24643A0029CE3D /* ExternalDisplayCell.swift in Sources */,
+				81D52A782BD9769900490625 /* ViewController.swift in Sources */,
+				81D52A742BD9769900490625 /* AppDelegate.swift in Sources */,
+				76EE962E2BFD29B400546087 /* SessionStore.swift in Sources */,
+				76EB9C282BE759EE0087C039 /* FloatingWindow.swift in Sources */,
+				76EE47F02BF131AE00B24AA2 /* TimerSettingsCell.swift in Sources */,
+				76EE96442BFFBE5200546087 /* EditScriptDelegate.swift in Sources */,
+				76EE47EE2BEFF37600B24AA2 /* GeneralSettingsViewController.swift in Sources */,
+				81D52A762BD9769900490625 /* SceneDelegate.swift in Sources */,
+				76EE96292BFD293B00546087 /* FirebaseManager.swift in Sources */,
+				76EB9C222BE40AFA0087C039 /* FloatingWindowViewController.swift in Sources */,
+				76ADE75D2C11055E009DEC2C /* SecretUpgradeOfferViewController.swift in Sources */,
+				76EE96392BFE1B5A00546087 /* UserDefaults+Scripts.swift in Sources */,
+				76EE96822C01193300546087 /* ScriptsCollectionViewController.swift in Sources */,
+				76EB9C242BE40C7D0087C039 /* TextStylingDelegate.swift in Sources */,
+				76580E362BEFAD95005E0A91 /* EditTextView.swift in Sources */,
+				7699F1FE2BFA4059001C0FDA /* GameViewController.swift in Sources */,
+				76EE96302BFD29E100546087 /* AuthenticationView.swift in Sources */,
+				76580E342BEAB9E7005E0A91 /* TimedSpeechCell.swift in Sources */,
+				76BDC1CE2BDADBC00069D812 /* SettingsViewController.swift in Sources */,
+				76580E322BE7D3BD005E0A91 /* NewUIPiPView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81D52A822BD976DF00490625 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81D52A8B2BD976DF00490625 /* TeleprompterXTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81D52A8C2BD976E000490625 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81D52A972BD976E000490625 /* TeleprompterXUITestsLaunchTests.swift in Sources */,
+				81D52A952BD976E000490625 /* TeleprompterXUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		81D52A882BD976DF00490625 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 81D52A6F2BD9769900490625 /* TeleprompterX */;
+			targetProxy = 81D52A872BD976DF00490625 /* PBXContainerItemProxy */;
+		};
+		81D52A922BD976E000490625 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 81D52A6F2BD9769900490625 /* TeleprompterX */;
+			targetProxy = 81D52A912BD976E000490625 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		81D52A792BD9769A00490625 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				81D52A7A2BD9769A00490625 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		81D52A7E2BD976DF00490625 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				81D52A7F2BD976DF00490625 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		81D52A982BD976E000490625 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		81D52A992BD976E000490625 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		81D52A9B2BD976E000490625 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = TeleprompterX/TeleprompterX.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.7;
+				DEVELOPMENT_TEAM = EZC8E46DNW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TeleprompterX/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Teleprompter;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to enable you to record yourself using the teleprompter";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs to access your Photo Library to save your videos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs to access your Photo Library to save your videos";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.7;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teleprompterx.mattdoug;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		81D52A9C2BD976E000490625 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = TeleprompterX/TeleprompterX.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.7;
+				DEVELOPMENT_TEAM = EZC8E46DNW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TeleprompterX/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Teleprompter;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to enable you to record yourself using the teleprompter";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs to access your Photo Library to save your videos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs to access your Photo Library to save your videos";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.7;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teleprompterx.mattdoug;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		81D52A9E2BD976E000490625 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EZC8E46DNW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.msdc.TeleprompterXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TeleprompterX.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TeleprompterX";
+			};
+			name = Debug;
+		};
+		81D52A9F2BD976E000490625 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EZC8E46DNW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.msdc.TeleprompterXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TeleprompterX.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TeleprompterX";
+			};
+			name = Release;
+		};
+		81D52AA12BD976E000490625 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EZC8E46DNW;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.msdc.TeleprompterXUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TeleprompterX;
+			};
+			name = Debug;
+		};
+		81D52AA22BD976E000490625 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EZC8E46DNW;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.msdc.TeleprompterXUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TeleprompterX;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		81D52A6B2BD9769900490625 /* Build configuration list for PBXProject "TeleprompterX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81D52A982BD976E000490625 /* Debug */,
+				81D52A992BD976E000490625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81D52A9A2BD976E000490625 /* Build configuration list for PBXNativeTarget "TeleprompterX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81D52A9B2BD976E000490625 /* Debug */,
+				81D52A9C2BD976E000490625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81D52A9D2BD976E000490625 /* Build configuration list for PBXNativeTarget "TeleprompterXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81D52A9E2BD976E000490625 /* Debug */,
+				81D52A9F2BD976E000490625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81D52AA02BD976E000490625 /* Build configuration list for PBXNativeTarget "TeleprompterXUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81D52AA12BD976E000490625 /* Debug */,
+				81D52AA22BD976E000490625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7648E4A22C26D15D0029CE3D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.1.0;
+			};
+		};
+		7654D3DC2BF69DA2000DBE24 /* XCRemoteSwiftPackageReference "AEXML" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tadija/AEXML.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.7.0;
+			};
+		};
+		7654D3DF2BF73E4B000DBE24 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.19;
+			};
+		};
+		7654D3E22BF769E8000DBE24 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CoreOffice/XMLCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.17.1;
+			};
+		};
+		7654D3E52BF77F13000DBE24 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.41.2;
+			};
+		};
+		76EB9C292BE76AD90087C039 /* XCRemoteSwiftPackageReference "UIPiPView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uakihir0/UIPiPView/";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		76EE961D2BFD28F100546087 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.26.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7648E4952C24B0D80029CE3D /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EE961D2BFD28F100546087 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		7648E4A32C26D15D0029CE3D /* FacebookAEM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7648E4A22C26D15D0029CE3D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookAEM;
+		};
+		7648E4A52C26D15D0029CE3D /* FacebookBasics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7648E4A22C26D15D0029CE3D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookBasics;
+		};
+		7648E4A72C26D15D0029CE3D /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7648E4A22C26D15D0029CE3D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		7648E4A92C26D15D0029CE3D /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7648E4A22C26D15D0029CE3D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		7654D3DD2BF69DA2000DBE24 /* AEXML */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7654D3DC2BF69DA2000DBE24 /* XCRemoteSwiftPackageReference "AEXML" */;
+			productName = AEXML;
+		};
+		7654D3E02BF73E4B000DBE24 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7654D3DF2BF73E4B000DBE24 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+		7654D3E32BF769E8000DBE24 /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7654D3E22BF769E8000DBE24 /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
+		};
+		7654D3E82BF77F13000DBE24 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7654D3E52BF77F13000DBE24 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
+		};
+		7654D3EA2BF77F13000DBE24 /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7654D3E52BF77F13000DBE24 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCatUI;
+		};
+		76EB9C2A2BE76C010087C039 /* UIPiPView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EB9C292BE76AD90087C039 /* XCRemoteSwiftPackageReference "UIPiPView" */;
+			productName = UIPiPView;
+		};
+		76EE961E2BFD28F100546087 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EE961D2BFD28F100546087 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		76EE96202BFD28F100546087 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EE961D2BFD28F100546087 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		76EE96222BFD28F100546087 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EE961D2BFD28F100546087 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		76EE96242BFD28F100546087 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EE961D2BFD28F100546087 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		76EE96262BFD28F100546087 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EE961D2BFD28F100546087 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		76EE962B2BFD299E00546087 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EE961D2BFD28F100546087 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		76EE963A2BFE1C0000546087 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EE961D2BFD28F100546087 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		76EE963C2BFE1C2000546087 /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EE961D2BFD28F100546087 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		76EE963E2BFE1C2000546087 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EE961D2BFD28F100546087 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 81D52A682BD9769900490625 /* Project object */;
+}
