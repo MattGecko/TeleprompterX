@@ -23,6 +23,7 @@ import StoreKit
 import Speech
 import CoreImage
 import QuartzCore
+import GoogleMobileAds
 
 class ViewController: UIViewController, SettingsDelegate, TimedSpeechCellDelegate, UITextViewDelegate, UIScrollViewDelegate,  UIDocumentPickerDelegate   {
     func didToggleWatermark(isEnabled: Bool) {
@@ -90,9 +91,53 @@ class ViewController: UIViewController, SettingsDelegate, TimedSpeechCellDelegat
         print("Reset text color to initial font color.")
     }
     
+    func updateAdVisibility() {
+        guard let adConfig = adConfig else {
+            // Default to showing ads if config is unavailable
+            loadInterstitialAd()
+            return
+        }
+
+        func loadInterstitialAd() {
+            let request = GADRequest()
+            //REAL KEY ca-app-pub-3785918208569837/8847847017
+            GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3940256099942544/4411468910", request: request) { [weak self] ad, error in
+                if let error = error {
+                    print("Failed to load interstitial ad: \(error)")
+                    return
+                }
+                self?.interstitialAd = ad
+                self?.interstitialAd?.fullScreenContentDelegate = self
+                self?.showInterstitialAd() // Show the ad once loaded
+            }
+        }
+
+        func showInterstitialAd() {
+            if let interstitialAd = interstitialAd {
+                interstitialAd.present(fromRootViewController: self)
+            } else {
+                print("Interstitial ad was not ready to be shown.")
+            }
+        }
+
+        // Check premium status and the remote config
+        Purchases.shared.getCustomerInfo { [weak self] (customerInfo, error) in
+            guard let self = self else { return }
+            
+            let isUpgraded = customerInfo?.entitlements["Pro Upgrade"]?.isActive == true
+            
+            // Show interstitial ad if allowed by config and not upgraded
+            if !isUpgraded && adConfig.showInterstitialAd {
+                loadInterstitialAd()
+            }
+        }
+    }
+
+    
     
     //EXTERNAL DISPLAY
     var externalWindow: UIWindow?
+    private var interstitialAd: GADInterstitialAd?
     
     @objc func screenDidConnect(_ notification: Notification) {
           if let screen = notification.object as? UIScreen {
@@ -848,6 +893,55 @@ class ViewController: UIViewController, SettingsDelegate, TimedSpeechCellDelegat
     var activityIndicator: UIActivityIndicatorView!
     var containerView: UIView!
     
+    struct AdConfig: Decodable {
+        let showBannerAd: Bool
+        let showInterstitialAd: Bool
+    }
+
+    private var adConfig: AdConfig?
+
+    func showInterstitialAd() {
+        if let interstitialAd = interstitialAd {
+            interstitialAd.present(fromRootViewController: self)
+        } else {
+            print("Interstitial ad was not ready to be shown.")
+        }
+    }
+
+
+    func fetchAdConfig() {
+        guard let url = URL(string: "https://mattcowlin.com/DougHasNoFriends/config.json") else {
+            // Default to showing ads if URL is invalid
+            adConfig = AdConfig(showBannerAd: true, showInterstitialAd: true)
+            updateAdVisibility()
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else { return }
+            
+            if let data = data, error == nil {
+                do {
+                    self.adConfig = try JSONDecoder().decode(AdConfig.self, from: data)
+                } catch {
+                    print("Failed to parse ad config; using default values.")
+                    self.adConfig = AdConfig(showBannerAd: true, showInterstitialAd: true)
+                }
+            } else {
+                print("Failed to fetch ad config: \(error?.localizedDescription ?? "No error description")")
+                // Set default to show ads if there was an error
+                self.adConfig = AdConfig(showBannerAd: true, showInterstitialAd: true)
+            }
+            
+            // Apply the configuration on the main thread
+            DispatchQueue.main.async {
+                self.updateAdVisibility()
+            }
+        }.resume()
+    }
+
+    
+    
     override func viewDidAppear(_ animated: Bool) {
           super.viewDidAppear(animated)
           // Setup the tap gesture recognizer in viewDidAppear
@@ -859,10 +953,11 @@ class ViewController: UIViewController, SettingsDelegate, TimedSpeechCellDelegat
                view.isUserInteractionEnabled = true
   
       }
-
+    
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchAdConfig()
         // Disable animations
         
         // Add observer to detect scroll changes
@@ -4140,6 +4235,16 @@ extension UITextView {
         }
         
         return lines
+    }
+}
+
+extension ViewController: GADFullScreenContentDelegate {
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Interstitial ad dismissed.")
+    }
+
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Failed to present interstitial ad: \(error)")
     }
 }
 

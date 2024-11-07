@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict><key>FacebookAutoLogAppEventsEnabled</key>
-    <true/>
-    <key>FacebookClientToken</key>
-    <string>64974538d9b7ec5ee25bcc1d6aa24098</string>
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb429562296658474</string>
-      </array>
-      </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>429562296658474</string>
-    <key>FacebookDisplayName</key>
-    <string>Teleprompter X</string>
+<dict>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<true/>
+	<key>FacebookClientToken</key>
+	<string>64974538d9b7ec5ee25bcc1d6aa24098</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb429562296658474</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>429562296658474</string>
+	<key>FacebookDisplayName</key>
+	<string>Teleprompter X</string>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>com.teleprompterx.mattdoug.refresh</string>
@@ -69,6 +70,8 @@
 	</array>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>This app uses speech recognition to create captions on your videos if you have the feature enabled.</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3785918208569837~5216989118</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>This app requires access to the microphone to capture audio for speech recognition and other features.</string>
 </dict>

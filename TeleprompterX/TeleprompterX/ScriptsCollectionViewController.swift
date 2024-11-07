@@ -8,11 +8,14 @@ import PDFKit
 import ZIPFoundation
 import RevenueCat
 import FBSDKCoreKit
+import GoogleMobileAds
+
 
 class ScriptsCollectionViewController: UIViewController, PaywallViewControllerDelegate, SpecialOfferViewControllerDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var deleteAllBtn: UIButton!
     @IBOutlet weak var upgradeBtn: UIButton!
+    private var bannerView: GADBannerView!
 
     private var sessionStore = SessionStore()
     var scripts: [Script] = []
@@ -31,6 +34,64 @@ class ScriptsCollectionViewController: UIViewController, PaywallViewControllerDe
             UserDefaults.standard.set(newValue, forKey: "ImportedScriptsCount")
         }
     }
+    struct AdConfig: Decodable {
+        let showBannerAd: Bool
+        let showInterstitialAd: Bool
+    }
+
+    private var adConfig: AdConfig?
+
+    func fetchAdConfig() {
+        guard let url = URL(string: "https://mattcowlin.com/DougHasNoFriends/config.json") else {
+            // Set default to show ads if URL is invalid
+            adConfig = AdConfig(showBannerAd: true, showInterstitialAd: true)
+            updateAdVisibility()
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else { return }
+            
+            if let data = data, error == nil {
+                do {
+                    self.adConfig = try JSONDecoder().decode(AdConfig.self, from: data)
+                } catch {
+                    print("Failed to parse ad config; using default values.")
+                    self.adConfig = AdConfig(showBannerAd: true, showInterstitialAd: true)
+                }
+            } else {
+                print("Failed to fetch ad config: \(error?.localizedDescription ?? "No error description")")
+                // Set default to show ads if there was an error
+                self.adConfig = AdConfig(showBannerAd: true, showInterstitialAd: true)
+            }
+            
+            // Apply the configuration on the main thread
+            DispatchQueue.main.async {
+                self.updateAdVisibility()
+            }
+        }.resume()
+    }
+    
+    func updateAdVisibility() {
+        // Ensure that `adConfig` is available
+        guard let adConfig = adConfig else {
+            // Default to showing ads if config is unavailable
+            bannerView.isHidden = false
+            return
+        }
+        
+        // Show or hide the banner ad based on the remote configuration and premium status
+        checkPremiumStatusAndUpdateUI()
+        
+        // Update banner visibility based on the `showBannerAd` config value
+        if adConfig.showBannerAd {
+            bannerView.isHidden = false
+            bannerView.load(GADRequest())  // Ensure the ad is loaded when it should be shown
+        } else {
+            bannerView.isHidden = true
+        }
+    }
+
     
     static var shouldPresentSpecialOffer: Bool = false
     
@@ -45,16 +106,24 @@ class ScriptsCollectionViewController: UIViewController, PaywallViewControllerDe
     }
 
     func checkPremiumStatusAndUpdateUI() {
-        Purchases.shared.getCustomerInfo { (customerInfo, error) in
+        Purchases.shared.getCustomerInfo { [weak self] (customerInfo, error) in
+            guard let self = self else { return }
+            
             if let customerInfo = customerInfo, error == nil {
-                if customerInfo.entitlements["Pro Upgrade"]?.isActive == true {
-                    self.upgradeBtn.isHidden = true
+                let isUpgraded = customerInfo.entitlements["Pro Upgrade"]?.isActive == true
+                self.upgradeBtn.isHidden = isUpgraded
+                
+                // Update banner visibility based on premium status and remote config
+                if let adConfig = self.adConfig {
+                    self.bannerView.isHidden = isUpgraded || !adConfig.showBannerAd
                 } else {
-                    self.upgradeBtn.isHidden = false
+                    self.bannerView.isHidden = isUpgraded
                 }
             }
         }
     }
+
+
     
     func presentAuthentication() {
         if !sessionStore.isSignedIn {
@@ -141,6 +210,25 @@ func presentAlert(title: String, message: String, completion: @escaping () -> Vo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Fetch the ad configuration remotely
+           fetchAdConfig()
+
+           // Initialize and configure the banner ad (as before)
+           bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        //REAL KEY ca-app-pub-3785918208569837/5811885489
+           bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+           bannerView.rootViewController = self
+           bannerView.delegate = self
+           bannerView.isHidden = true
+           view.addSubview(bannerView)
+           bannerView.translatesAutoresizingMaskIntoConstraints = false
+           NSLayoutConstraint.activate([
+               bannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+               bannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+               bannerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+               bannerView.heightAnchor.constraint(equalToConstant: 50)
+           ])
+           bannerView.load(GADRequest())
         // Add observer for didSignUp notification
         NotificationCenter.default.addObserver(self, selector: #selector(handleSignUpNotification), name: .didSignUp, object: nil)
         // Log a registration completion event
@@ -873,4 +961,13 @@ extension ScriptsCollectionViewController: EditScriptDelegate {
     }
 }
 
+extension ScriptsCollectionViewController: GADBannerViewDelegate {
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("Banner ad loaded successfully.")
+    }
+
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+        print("Failed to load banner ad: \(error.localizedDescription)")
+    }
+}
 

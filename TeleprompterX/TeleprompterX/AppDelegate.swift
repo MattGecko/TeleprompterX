@@ -5,6 +5,7 @@ import Firebase
 import FirebaseAppCheck
 import UserNotifications
 import FBSDKCoreKit
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -38,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 UserDefaults.standard.set(value, forKey: key)
             }
         }
+        
+        // Initialize the Google Mobile Ads SDK
+              GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         // Configure RevenueCat
         Purchases.configure(withAPIKey: "appl_ggRoolvjwYaxIOqdKiMfrOJSbnV")

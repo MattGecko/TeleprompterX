@@ -14,6 +14,7 @@
 		7648E4A62C26D15D0029CE3D /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 7648E4A52C26D15D0029CE3D /* FacebookBasics */; };
 		7648E4A82C26D15D0029CE3D /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7648E4A72C26D15D0029CE3D /* FacebookCore */; };
 		7648E4AA2C26D15D0029CE3D /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 7648E4A92C26D15D0029CE3D /* FacebookLogin */; };
+		7652B6502CDD1D9B007B7E3A /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 7652B64F2CDD1D9B007B7E3A /* GoogleMobileAds */; };
 		7654D3DE2BF69DA2000DBE24 /* AEXML in Frameworks */ = {isa = PBXBuildFile; productRef = 7654D3DD2BF69DA2000DBE24 /* AEXML */; };
 		7654D3E12BF73E4B000DBE24 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 7654D3E02BF73E4B000DBE24 /* ZIPFoundation */; };
 		7654D3E42BF769E8000DBE24 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 7654D3E32BF769E8000DBE24 /* XMLCoder */; };
@@ -175,6 +176,7 @@
 				7648E4962C24B0D80029CE3D /* FirebaseMessaging in Frameworks */,
 				76EB9C2B2BE76C010087C039 /* UIPiPView in Frameworks */,
 				7654D3EB2BF77F13000DBE24 /* RevenueCatUI in Frameworks */,
+				7652B6502CDD1D9B007B7E3A /* GoogleMobileAds in Frameworks */,
 				76FAF0282C162743001A041D /* Speech.framework in Frameworks */,
 				7654D3E92BF77F13000DBE24 /* RevenueCat in Frameworks */,
 				76EE962C2BFD299E00546087 /* FirebaseAuth in Frameworks */,
@@ -348,6 +350,7 @@
 				7648E4A52C26D15D0029CE3D /* FacebookBasics */,
 				7648E4A72C26D15D0029CE3D /* FacebookCore */,
 				7648E4A92C26D15D0029CE3D /* FacebookLogin */,
+				7652B64F2CDD1D9B007B7E3A /* GoogleMobileAds */,
 			);
 			productName = TeleprompterX;
 			productReference = 81D52A702BD9769900490625 /* TeleprompterX.app */;
@@ -432,6 +435,7 @@
 				7654D3E52BF77F13000DBE24 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 				76EE961D2BFD28F100546087 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				7648E4A22C26D15D0029CE3D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				7652B64E2CDD1D9B007B7E3A /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 81D52A712BD9769900490625 /* Products */;
 			projectDirPath = "";
@@ -882,6 +886,14 @@
 				minimumVersion = 14.1.0;
 			};
 		};
+		7652B64E2CDD1D9B007B7E3A /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.11.0;
+			};
+		};
 		7654D3DC2BF69DA2000DBE24 /* XCRemoteSwiftPackageReference "AEXML" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tadija/AEXML.git";
@@ -957,6 +969,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7648E4A22C26D15D0029CE3D /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookLogin;
+		};
+		7652B64F2CDD1D9B007B7E3A /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7652B64E2CDD1D9B007B7E3A /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 		7654D3DD2BF69DA2000DBE24 /* AEXML */ = {
 			isa = XCSwiftPackageProductDependency;
