@@ -101,7 +101,10 @@ class ViewController: UIViewController, SettingsDelegate, TimedSpeechCellDelegat
         func loadInterstitialAd() {
             let request = GADRequest()
             //REAL KEY ca-app-pub-3785918208569837/8847847017
-            GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3940256099942544/4411468910", request: request) { [weak self] ad, error in
+            
+//            TEST KEY ca-app-pub-3940256099942544/4411468910
+            
+            GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3785918208569837/8847847017", request: request) { [weak self] ad, error in
                 if let error = error {
                     print("Failed to load interstitial ad: \(error)")
                     return

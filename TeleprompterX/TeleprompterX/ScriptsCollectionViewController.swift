@@ -216,7 +216,10 @@ func presentAlert(title: String, message: String, completion: @escaping () -> Vo
            // Initialize and configure the banner ad (as before)
            bannerView = GADBannerView(adSize: GADAdSizeBanner)
         //REAL KEY ca-app-pub-3785918208569837/5811885489
-           bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        
+//        TEST KEY ca-app-pub-3940256099942544/2934735716
+        
+           bannerView.adUnitID = "ca-app-pub-3785918208569837/5811885489"
            bannerView.rootViewController = self
            bannerView.delegate = self
            bannerView.isHidden = true
