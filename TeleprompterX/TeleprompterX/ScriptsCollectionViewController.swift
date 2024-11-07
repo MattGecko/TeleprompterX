@@ -34,62 +34,111 @@ class ScriptsCollectionViewController: UIViewController, PaywallViewControllerDe
             UserDefaults.standard.set(newValue, forKey: "ImportedScriptsCount")
         }
     }
+    // AdConfig struct with a custom initializer to handle both `Bool` and `String` types
     struct AdConfig: Decodable {
         let showBannerAd: Bool
         let showInterstitialAd: Bool
+        let useSky: Bool?
+        let AdCount: Int?
+        
+        enum CodingKeys: String, CodingKey {
+            case showBannerAd
+            case showInterstitialAd
+            case useSky
+            case AdCount
+        }
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            
+            // Parse `showBannerAd` and `showInterstitialAd` as `String` and explicitly convert to `Bool`
+            let bannerString = try? container.decode(String.self, forKey: .showBannerAd)
+            self.showBannerAd = (bannerString?.lowercased() == "true")
+            
+            let interstitialString = try? container.decode(String.self, forKey: .showInterstitialAd)
+            self.showInterstitialAd = (interstitialString?.lowercased() == "true")
+            
+            // Parse optional fields `useSky` and `AdCount` as usual
+            self.useSky = try? container.decode(Bool.self, forKey: .useSky)
+            self.AdCount = try? container.decode(Int.self, forKey: .AdCount)
+        }
+        
+        // Default initializer to use if JSON is missing
+        init(showBannerAd: Bool = true, showInterstitialAd: Bool = true, useSky: Bool? = nil, AdCount: Int? = nil) {
+            self.showBannerAd = showBannerAd
+            self.showInterstitialAd = showInterstitialAd
+            self.useSky = useSky
+            self.AdCount = AdCount
+        }
     }
+
+
+
+
 
     private var adConfig: AdConfig?
 
     func fetchAdConfig() {
         guard let url = URL(string: "https://mattcowlin.com/DougHasNoFriends/config.json") else {
-            // Set default to show ads if URL is invalid
-            adConfig = AdConfig(showBannerAd: true, showInterstitialAd: true)
+            print("Invalid URL. Defaulting to show ads.")
+            adConfig = AdConfig()  // Uses the default initializer
             updateAdVisibility()
             return
         }
 
+        print("Fetching ad configuration from URL: \(url)")
+
         URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self else { return }
-            
-            if let data = data, error == nil {
+
+            if let error = error {
+                print("Failed to fetch ad config with error: \(error.localizedDescription). Defaulting to show ads.")
+                self.adConfig = AdConfig()  // Uses the default initializer
+            } else if let data = data {
+                print("Received data: \(String(data: data, encoding: .utf8) ?? "Data not convertible to String")")
                 do {
                     self.adConfig = try JSONDecoder().decode(AdConfig.self, from: data)
+                    print("Successfully fetched and parsed ad config: \(self.adConfig!)")
                 } catch {
-                    print("Failed to parse ad config; using default values.")
-                    self.adConfig = AdConfig(showBannerAd: true, showInterstitialAd: true)
+                    print("Failed to parse ad config with error: \(error). Defaulting to show ads.")
+                    self.adConfig = AdConfig()  // Uses the default initializer
                 }
             } else {
-                print("Failed to fetch ad config: \(error?.localizedDescription ?? "No error description")")
-                // Set default to show ads if there was an error
-                self.adConfig = AdConfig(showBannerAd: true, showInterstitialAd: true)
+                print("No data received. Defaulting to show ads.")
+                self.adConfig = AdConfig()  // Uses the default initializer
             }
-            
+
             // Apply the configuration on the main thread
             DispatchQueue.main.async {
                 self.updateAdVisibility()
             }
         }.resume()
     }
-    
+
+
+
     func updateAdVisibility() {
-        // Ensure that `adConfig` is available
+        // Check if `adConfig` is available
         guard let adConfig = adConfig else {
             // Default to showing ads if config is unavailable
             bannerView.isHidden = false
+            bannerView.load(GADRequest()) // Load the ad since the config is unavailable
             return
         }
         
-        // Show or hide the banner ad based on the remote configuration and premium status
-        checkPremiumStatusAndUpdateUI()
+        // Show or hide the banner ad based on the `showBannerAd` config value
+        // Use `true` as the default if `showBannerAd` is nil
+        let shouldShowBannerAd = adConfig.showBannerAd ?? true
         
-        // Update banner visibility based on the `showBannerAd` config value
-        if adConfig.showBannerAd {
+        if shouldShowBannerAd {
             bannerView.isHidden = false
             bannerView.load(GADRequest())  // Ensure the ad is loaded when it should be shown
         } else {
             bannerView.isHidden = true
         }
+        
+        // Call `checkPremiumStatusAndUpdateUI` to further adjust visibility based on premium status
+        checkPremiumStatusAndUpdateUI()
     }
 
     
@@ -113,12 +162,14 @@ class ScriptsCollectionViewController: UIViewController, PaywallViewControllerDe
                 let isUpgraded = customerInfo.entitlements["Pro Upgrade"]?.isActive == true
                 self.upgradeBtn.isHidden = isUpgraded
                 
-                // Update banner visibility based on premium status and remote config
-                if let adConfig = self.adConfig {
-                    self.bannerView.isHidden = isUpgraded || !adConfig.showBannerAd
-                } else {
-                    self.bannerView.isHidden = isUpgraded
-                }
+                // Determine if the banner should show based on premium status and remote config
+                let shouldShowBannerAd = self.adConfig?.showBannerAd ?? true  // Default to `true` if `showBannerAd` is nil
+                
+                // Hide the banner if the user is upgraded, or if `showBannerAd` is explicitly set to `false`
+                self.bannerView.isHidden = isUpgraded || !shouldShowBannerAd
+            } else {
+                // If there's an error retrieving customer info, assume default state for ads
+                self.bannerView.isHidden = false
             }
         }
     }

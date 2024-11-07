@@ -899,7 +899,41 @@ class ViewController: UIViewController, SettingsDelegate, TimedSpeechCellDelegat
     struct AdConfig: Decodable {
         let showBannerAd: Bool
         let showInterstitialAd: Bool
+        let useSky: Bool?
+        let AdCount: Int?
+        
+        enum CodingKeys: String, CodingKey {
+            case showBannerAd
+            case showInterstitialAd
+            case useSky
+            case AdCount
+        }
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            
+            // Parse `showBannerAd` and `showInterstitialAd` as `String` and explicitly convert to `Bool`
+            let bannerString = try? container.decode(String.self, forKey: .showBannerAd)
+            self.showBannerAd = (bannerString?.lowercased() == "true")
+            
+            let interstitialString = try? container.decode(String.self, forKey: .showInterstitialAd)
+            self.showInterstitialAd = (interstitialString?.lowercased() == "true")
+            
+            // Parse optional fields `useSky` and `AdCount` as usual
+            self.useSky = try? container.decode(Bool.self, forKey: .useSky)
+            self.AdCount = try? container.decode(Int.self, forKey: .AdCount)
+        }
+        
+        // Default initializer to use if JSON is missing
+        init(showBannerAd: Bool = true, showInterstitialAd: Bool = true, useSky: Bool? = nil, AdCount: Int? = nil) {
+            self.showBannerAd = showBannerAd
+            self.showInterstitialAd = showInterstitialAd
+            self.useSky = useSky
+            self.AdCount = AdCount
+        }
     }
+
+
 
     private var adConfig: AdConfig?
 
@@ -914,9 +948,9 @@ class ViewController: UIViewController, SettingsDelegate, TimedSpeechCellDelegat
 
     func fetchAdConfig() {
         guard let url = URL(string: "https://mattcowlin.com/DougHasNoFriends/config.json") else {
-            // Default to showing ads if URL is invalid
-            adConfig = AdConfig(showBannerAd: true, showInterstitialAd: true)
-            updateAdVisibility()
+            print("Invalid URL. Defaulting to show ads.")
+            adConfig = AdConfig()  // Uses default values for ad visibility
+            updateInterstitialAdVisibility()
             return
         }
 
@@ -926,22 +960,61 @@ class ViewController: UIViewController, SettingsDelegate, TimedSpeechCellDelegat
             if let data = data, error == nil {
                 do {
                     self.adConfig = try JSONDecoder().decode(AdConfig.self, from: data)
+                    print("Successfully fetched ad config:", self.adConfig!)
                 } catch {
                     print("Failed to parse ad config; using default values.")
-                    self.adConfig = AdConfig(showBannerAd: true, showInterstitialAd: true)
+                    self.adConfig = AdConfig()
                 }
             } else {
-                print("Failed to fetch ad config: \(error?.localizedDescription ?? "No error description")")
-                // Set default to show ads if there was an error
-                self.adConfig = AdConfig(showBannerAd: true, showInterstitialAd: true)
+                print("Failed to fetch ad config:", error?.localizedDescription ?? "No error description")
+                self.adConfig = AdConfig() // Default to showing ads
             }
-            
-            // Apply the configuration on the main thread
+
             DispatchQueue.main.async {
-                self.updateAdVisibility()
+            //    self.updateBannerAdVisibility()
+                self.updateInterstitialAdVisibility()
             }
         }.resume()
     }
+
+    
+    func updateInterstitialAdVisibility() {
+        guard let adConfig = adConfig else {
+            loadInterstitialAd()
+            return
+        }
+
+        Purchases.shared.getCustomerInfo { [weak self] (customerInfo, error) in
+            guard let self = self else { return }
+            
+            let isUpgraded = customerInfo?.entitlements["Pro Upgrade"]?.isActive == true
+            
+            if !isUpgraded && adConfig.showInterstitialAd {
+                self.loadInterstitialAd()
+            }
+        }
+    }
+    
+    func loadInterstitialAd() {
+        let request = GADRequest()
+        //REAL KEY ca-app-pub-3785918208569837/8847847017
+        
+//            TEST KEY ca-app-pub-3940256099942544/4411468910
+        
+        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3785918208569837/8847847017", request: request) { [weak self] ad, error in
+            if let error = error {
+                print("Failed to load interstitial ad: \(error)")
+                return
+            }
+            self?.interstitialAd = ad
+            self?.interstitialAd?.fullScreenContentDelegate = self
+            self?.showInterstitialAd() // Show the ad once loaded
+        }
+    }
+
+    
+    
+   
 
     
     
