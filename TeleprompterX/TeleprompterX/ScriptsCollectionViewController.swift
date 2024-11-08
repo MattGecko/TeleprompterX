@@ -616,7 +616,7 @@ func presentAlert(title: String, message: String, completion: @escaping () -> Vo
 
     
     
-
+/* CODE FOR IMPORTING ONE SCRIPT FOR FREE
     @IBAction func importScript() {
         isPremiumUser { [weak self] isPremium in
             guard let self = self else { return }
@@ -631,8 +631,39 @@ func presentAlert(title: String, message: String, completion: @escaping () -> Vo
             self.present(documentPicker, animated: true, completion: nil)
         }
     }
-
+*/
  
+    
+    @IBAction func importScript() {
+        Purchases.shared.getCustomerInfo { [weak self] (customerInfo, error) in
+            guard let self = self else { return }
+
+            if let customerInfo = customerInfo, error == nil {
+                let isUpgraded = customerInfo.entitlements["Pro Upgrade"]?.isActive == true
+                
+                if !isUpgraded {
+                    // Show the paywall if the user is not upgraded
+                    self.displayPaywall()
+                } else {
+                    // Proceed with importing the script if the user is upgraded
+                    self.presentImportScriptPicker()
+                }
+            } else {
+                // Handle error or assume the user is not upgraded
+                print("Failed to fetch customer info or user is not upgraded.")
+                self.displayPaywall()
+            }
+        }
+    }
+
+    private func presentImportScriptPicker() {
+        let supportedTypes: [UTType] = [UTType.text, UTType.pdf, UTType(filenameExtension: "docx")!]
+        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: supportedTypes)
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        self.present(documentPicker, animated: true, completion: nil)
+    }
+
 
     func displayPaywall() {
         // Implement the logic to display the paywall

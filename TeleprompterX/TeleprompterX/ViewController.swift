@@ -125,7 +125,7 @@ class ViewController: UIViewController, SettingsDelegate, TimedSpeechCellDelegat
 
         // Check premium status and the remote config
         Purchases.shared.getCustomerInfo { [weak self] (customerInfo, error) in
-            guard let self = self else { return }
+            guard self != nil else { return }
             
             let isUpgraded = customerInfo?.entitlements["Pro Upgrade"]?.isActive == true
             
@@ -135,6 +135,27 @@ class ViewController: UIViewController, SettingsDelegate, TimedSpeechCellDelegat
             }
         }
     }
+    
+    
+    private func presentAdUpgradeAlert() {
+        let alert = UIAlertController(
+            title: "Why not help us out?",
+            message: "Remove ads and support us by upgrading to Premium!",
+            preferredStyle: .alert
+        )
+
+        let upgradeAction = UIAlertAction(title: "Sure, sounds great!", style: .default) { [weak self] _ in
+            self?.displayPaywall()
+        }
+
+        let dismissAction = UIAlertAction(title: "Not right now!", style: .cancel, handler: nil)
+
+        alert.addAction(upgradeAction)
+        alert.addAction(dismissAction)
+
+        self.present(alert, animated: true, completion: nil)
+    }
+
 
     
     
@@ -3591,20 +3612,84 @@ class ViewController: UIViewController, SettingsDelegate, TimedSpeechCellDelegat
 
     func promptToSaveVideo(url: URL) {
         DispatchQueue.main.async {
-            self.hideActivityIndicator()// Stop the activity indicator
+            self.hideActivityIndicator() // Stop the activity indicator
 
-            let alertController = UIAlertController(title: "Save Video?", message: "Do you want to save the recorded video?", preferredStyle: .alert)
-            let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
-                self?.saveVideoToPhotoLibrary(url: url)
+            Purchases.shared.getCustomerInfo { [weak self] (customerInfo, error) in
+                guard let self = self else { return }
+
+                let isUpgraded = customerInfo?.entitlements["Pro Upgrade"]?.isActive == true
+
+                if isUpgraded {
+                    // User is premium, allow them to save the video
+                    self.showSaveVideoAlert(url: url)
+                } else {
+                    // User is not premium, prompt to upgrade
+                    self.showUpgradePrompt(url: url)
+                }
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] _ in
-                self?.resetUI()
-            }
-            alertController.addAction(saveAction)
-            alertController.addAction(cancelAction)
-            self.present(alertController, animated: true, completion: nil)
         }
     }
+    
+    private func showSaveVideoAlert(url: URL) {
+        let alertController = UIAlertController(title: "Save Video?", message: "Do you want to save the recorded video?", preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
+            self?.saveVideoToPhotoLibrary(url: url)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] _ in
+            self?.resetUI()
+        }
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    private func showUpgradePrompt(url: URL) {
+        let alertController = UIAlertController(
+            title: "Upgrade to Save",
+            message: "Saving videos is a premium feature. Upgrade to save your recording.",
+            preferredStyle: .alert
+        )
+
+        let upgradeAction = UIAlertAction(title: "Upgrade", style: .default) { [weak self] _ in
+            self?.displayPaywall { [weak self] isPremium in
+                guard let self = self else { return }
+
+                if isPremium {
+                    // Save the video automatically after the purchase
+                    self.saveVideoToPhotoLibrary(url: url)
+                } else {
+                    self.resetUI()
+                }
+            }
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] _ in
+            self?.resetUI()
+        }
+
+        alertController.addAction(upgradeAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+
+    private var completionHandler: ((Bool) -> Void)?
+
+
+    private func displayPaywall(completion: @escaping (Bool) -> Void) {
+        let paywallViewController = PaywallViewController()
+        paywallViewController.delegate = self
+
+        // Store the completion handler
+        self.completionHandler = completion
+
+        // Show the paywall
+        self.present(paywallViewController, animated: true, completion: nil)
+    }
+
+
+
+
     
     func saveVideoToPhotoLibrary(url: URL) {
         DispatchQueue.main.async {
@@ -3652,6 +3737,7 @@ class ViewController: UIViewController, SettingsDelegate, TimedSpeechCellDelegat
                 isFinal = result.isFinal
             }
            
+    
             if error != nil || isFinal {
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
@@ -4254,11 +4340,16 @@ func extractText(from data: Data, fileType: String) -> String? {
 
 //MARK: RevenueCat Paywall
 extension ViewController: PaywallViewControllerDelegate {
-    func paywallViewController(_ controller: PaywallViewController,
-                               didFinishPurchasingWith customerInfo: CustomerInfo) {
-        checkPremiumStatus()
+    func paywallViewController(_ controller: PaywallViewController, didFinishPurchasingWith customerInfo: CustomerInfo) {
+        // Check if the user upgraded
+        if customerInfo.entitlements["Pro Upgrade"]?.isActive == true {
+            print("User has upgraded.")
+            completionHandler?(true) // Call the completion handler, if available
+        } else {
+            print("User did not upgrade.")
+            completionHandler?(false) // Notify that the upgrade didn't occur
+        }
     }
-
 }
 
 extension UIViewController {
@@ -4317,6 +4408,7 @@ extension UITextView {
 extension ViewController: GADFullScreenContentDelegate {
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Interstitial ad dismissed.")
+        presentAdUpgradeAlert()
     }
 
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
